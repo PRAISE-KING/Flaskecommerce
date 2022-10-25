@@ -1,77 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
 
-    <!-- CSS only -->
+ <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
 
-    <link rel="stylesheet" href="{{url_for('static', filename='vendor/products.css')}}">
-
-    <script>
-        function logout()
-        {
-        alert ("Are you sure you want to log out")
+ <link rel="stylesheet" href="{{url_for('static', filename='vendor/products.css')}}">
 
 
-        }
+ <style>
+ body{
+ background-color:black;
 
-    </script>
+ }
 
+ </style>
+ <script>
+ function logout()
+ {
+ alert("Are you sure you want to logout")
+
+ }
+
+ </script>
 
 </head>
 <body>
 
-    <div class="container">
-
-        <h1 class="heading text-info">Jambo Shop Online Store <span>Welocome!</span></h1>
-
-        <b>
-
-          <h1>  Welcome {{session['key']}}  :{{session['email']}} </h1>
-
-        </b>
-
-        <a href="/login" class="btn btn-danger btn-lg mb-3" onclick="logout()">log out</a>
+ <div class="container">
 
 
-        <div class="gallery card shadow bg-secondary p-5">
 
-            <div class="gallery-item">
-                {% for item in mydata %}
+ <h1 class="heading text-info">Jambo Shop Online Store <span>Welocome!</span></h1>
 
-<!--            with cards-->
+ <b>
+ <h2 class="text-white">Welcome {{session['key']}} : {{session['email']}}</h2>
 
-            <div class="card shadow" style="border-radius:10px;">]
+ </b>
+ <a href="/logout" class="btn btn-danger btn-lg mb-2" onclick="logout()">Logout</a>
 
-            <div class="gallery-item">
-                <img class="gallery-image" src="../static/images/{{item[7]}}" alt="" style="border-radius:10px;">
-            </div>
 
-            <div class="card-body text-center">
 
-                <h6>{{item[1]}}</h6>
-                <h6>{{item[3]}}</h6>
-                <h6>price {{item[4]}}</h6>
-                <h6>Discount: {{item[2]}}</h6>
 
-                <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla eum ipsa maxime dolores non, nesciunt consequuntur harum exercitationem doloribus, voluptas fuga eos facere ea est voluptatibus dignissimos minima veniam nihil?</p>
 
-                <a href="" class="btn btn-primary btn-lg">Add to Cart</a>
+ <div class="gallery card shadow bg-secondary p-5 mb-5">
 
-            </div>
 
-          </div>
 
-                {% endfor %}
+ {% for phone in phones%}
+  <!--  cab use any variable so log ass it isnt same as eg fashion or phones eg for praiz in fashion -->
 
-        </div>
-        </div>
-    </div>
+<!-- with cards-->
+
+
+ <div class="card shadow" style="border-radius:10px;">
+
+
+ <div class="gallery-item">
+ <img class="gallery-image" src="../static/images/{{phone[7]}}" alt="" style="border-radius:10px;">
+ </div>
+
+ <div class="card-body text-center">
+ <h4>{{phone[1]}}</h4>
+ <h6>Price {{phone[3]}} KES</h6>
+ <h6>Discount: {{phone[4]}}</h6>
+ <p class="lead">{{phone[2]}}</p>
+
+
+ <a href="/single/{{phone[0]}}" class="btn btn-primary btn-lg">Add to Cart</a>
+
+ </div>
+
+ </div>
+
+ {% endfor %}
+
+ </div>
+
+   <div class="gallery card shadow bg-secondary p-5 mb-5">
+
+
+
+
+ {% for praiz in fashion%}
+  <!--  cab use any variable so log ass it isnt same as eg fashion or phones eg for praiz in fashion -->
+
+<!-- with cards-->
+
+
+ <div class="card shadow" style="border-radius:10px;">
+
+
+ <div class="gallery-item">
+ <img class="gallery-image" src="../static/images/{{praiz[7]}}" alt="" style="border-radius:10px;">
+ </div>
+
+ <div class="card-body text-center">
+ <h4>{{praiz[1]}}</h4>
+ <h6>Price {{praiz[3]}} KES</h6>
+ <h6>Discount: {{praiz[4]}}</h6>
+ <p class="lead">{{praiz[2]}}</p>
+
+
+ <a href="/single/{{praiz[0]}}" class="btn btn-primary btn-lg">Add to Cart</a>
+
+ </div>
+
+ </div>
+
+ {% endfor %}
+
+ </div>
+
+
+   <div class="gallery card shadow bg-secondary p-5 mb-5">
+
+
+
+ {% for x in sports%}
+  <!--  cab use any variable so log ass it isnt same as eg fashion or phones eg for praiz in fashion -->
+
+<!-- with cards-->
+
+
+ <div class="card shadow" style="border-radius:10px;">
+
+
+ <div class="gallery-item">
+ <img class="gallery-image" src="../static/images/{{x[7]}}" alt="" style="border-radius:10px;">
+ </div>
+
+ <div class="card-body text-center">
+ <h4>{{x[1]}}</h4>
+ <h6>Price {{x[3]}} KES</h6>
+ <h6>Discount: {{x[4]}}</h6>
+ <p class="lead">{{x[2]}}</p>
+
+
+ <a href="/single/{{x[0]}}" class="btn btn-primary btn-lg">Add to Cart</a>
+
+ </div>
+
+ </div>
+
+ {% endfor %}
+
+ </div>
+
+ </div>
 </body>
 </html>
