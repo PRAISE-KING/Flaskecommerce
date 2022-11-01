@@ -33,7 +33,7 @@ def products():
         fashion = cursor_fashion.fetchall()
 
         cursor_sports = connection.cursor()
-        sql_sports = 'SELECT * FROM products WHERE product_category="sports" LIMIT 6'
+        sql_sports = 'SELECT * FROM products WHERE product_category="sports" ORDER BY RAND() LIMIT 6'
         cursor_sports.execute(sql_sports)
 
         sports = cursor_sports.fetchall()
@@ -161,6 +161,7 @@ def single(product_id):
 
     else:
         return redirect('/login')
+
 
 
 
